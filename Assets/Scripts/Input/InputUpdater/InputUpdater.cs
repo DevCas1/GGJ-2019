@@ -33,6 +33,19 @@ namespace Sjouke.Input
         public KeyCode PositiveKey;
         [Tooltip("The required state of the key for the input to register.")]
         public InputButtonState RequiredState;
+        [Tooltip("The BoolReference the value will be stored in.")]
+        public BoolVariable InputReference;
+    }
+
+    [Serializable]
+    public struct EventButtonInputObject
+    {
+        [Tooltip("The name of this Input.")]
+        public string Name;
+        [Tooltip("The positive key of the input.")]
+        public KeyCode PositiveKey;
+        [Tooltip("The required state of the key for the input to register.")]
+        public InputButtonState RequiredState;
         [Tooltip("The GameEvent to trigger if the input is registered.")]
         public GameEvent InputEvent;
     }
@@ -61,16 +74,18 @@ namespace Sjouke.Input
     [AddComponentMenu("Controls/Input Updater")]
     public sealed class InputUpdater : MonoBehaviour
     {
-        public ValueInputObject[] InputValueButtons = new ValueInputObject[0];
-        public ButtonInputObject[] InputEventButtons = new ButtonInputObject[0];
+        public ValueInputObject[] ValueButtons = new ValueInputObject[0];
+        public ButtonInputObject[] InputButtons = new ButtonInputObject[0];
+        public EventButtonInputObject[] EventButtons = new EventButtonInputObject[0];
         public AxisInputObject[] InputAxes = new AxisInputObject[0];
         public MouseInput Pointer = new MouseInput();
 
         private void Update()
         {
             UpdateMouseValues();
-            if (InputValueButtons.Length > 0) UpdateValueButtons();
-            if (InputEventButtons.Length > 0) UpdateEventButtons();
+            if (ValueButtons.Length > 0) UpdateValueButtons();
+            if (InputButtons.Length > 0) UpdateInputButtons();
+            if (EventButtons.Length > 0) UpdateEventButtons();
             if (InputAxes.Length > 0) UpdateInputAxes();
         }
 
@@ -87,7 +102,7 @@ namespace Sjouke.Input
 
         private void UpdateValueButtons()
         {
-            foreach (var input in InputValueButtons)
+            foreach (var input in ValueButtons)
             {
                 try
                 {
@@ -95,14 +110,29 @@ namespace Sjouke.Input
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"NewInputUpdater (InputValueButtons): {e.Message}");
+                    Debug.LogError($"InputUpdater (InputValueButtons): {e.Message}");
+                }
+            }
+        }
+
+        private void UpdateInputButtons()
+        {
+            foreach (var input in InputButtons)
+            {
+                try
+                {
+                    input.InputReference.Value = (CheckButton(input.PositiveKey, input.RequiredState));
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError($"InputUpdater (InputButtons): {e.Message}");
                 }
             }
         }
 
         private void UpdateEventButtons()
         {
-            foreach (var input in InputEventButtons)
+            foreach (var input in EventButtons)
             {
                 try
                 {
@@ -110,7 +140,7 @@ namespace Sjouke.Input
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"NewInputUpdater (InputEventButtons): {e.Message}");
+                    Debug.LogError($"InputUpdater (InputEventButtons): {e.Message}");
                 }
             }
         }
@@ -141,7 +171,7 @@ namespace Sjouke.Input
                 }
                 catch (Exception e)
                 {
-                    Debug.LogError($"NewInputUpdater (InputValueButtons): {e.Message}");
+                    Debug.LogError($"InputUpdater (InputValueButtons): {e.Message}");
                 }
             }
         }

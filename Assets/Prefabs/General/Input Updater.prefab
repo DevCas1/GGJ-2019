@@ -43,7 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a09fc5a3046f4f54fac294f82c9edfce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InputValueButtons:
+  ValueButtons:
   - Name: Keyboard Horizontal
     PositiveKey: 100
     RequiredState: 0
@@ -56,7 +56,12 @@ MonoBehaviour:
     NegativeKey: 115
     RequiredNegativeState: 0
     InputReference: {fileID: 11400000, guid: b69f062f670f7874f8feb09f5a22e133, type: 2}
-  InputEventButtons: []
+  InputButtons:
+  - Name: Spacebar
+    PositiveKey: 32
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: da46ac92ca7723b4daa5826e4dbaf4ac, type: 2}
+  EventButtons: []
   InputAxes:
   - Name: Mouse X
     InvertAxis: 0
