@@ -79,13 +79,15 @@ MonoBehaviour:
   MovementInput: {fileID: 11400000, guid: bbe4496759c33e84c920d8ad6560a2b4, type: 2}
   JumpButtonVariable: {fileID: 11400000, guid: f217f7d673b4dc74684d89ff18730d65, type: 2}
   MovementSpeed: 8
-  JumpForce: 20
-  JumpFallSubstraction: 0.85
+  JumpForce: 13
+  JumpFallSubstraction: 25
   JumpCheckDistance: 1.1
+  JumpCooldown: 0.5
   JumpCheckOffset: {x: 0, y: 0, z: 0}
+  Ability1ButtonVariable: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c,
+    type: 2}
   BearVisualStandard: {fileID: 3804428290429488537}
   BearVisualRolling: {fileID: 6294597571565076813}
-  RollAbilityButton: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
   RollAbilitySpeed: 20
   RollAbilityDistance: 7.5
   RollColCheckDistance: 1.5
