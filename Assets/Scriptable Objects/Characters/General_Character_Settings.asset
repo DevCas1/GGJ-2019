@@ -10,12 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: Bear_Character_Settings
-  m_EditorClassIdentifier: Assembly-CSharp:Sjouke.Controls:BearSettings
-  MovementSpeed: 6
+  m_Name: General_Character_Settings
+  m_EditorClassIdentifier: Assembly-CSharp:Sjouke.Controls:CharacterSettings
+  MovementSpeed: 8
   JumpForce: 10
   JumpFallSubstraction: 1.2
   JumpCheckDistance: 1.1
   JumpCheckOffset: {x: 0, y: 0, z: 0}
-  RollAbilitySpeed: 12
-  RollAbilityDistance: 10

@@ -56,11 +56,25 @@ MonoBehaviour:
     NegativeKey: 115
     RequiredNegativeState: 0
     InputReference: {fileID: 11400000, guid: b69f062f670f7874f8feb09f5a22e133, type: 2}
+  - Name: Arrow Keys Horizontal
+    PositiveKey: 275
+    RequiredState: 0
+    NegativeKey: 276
+    RequiredNegativeState: 0
+    InputReference: {fileID: 11400000, guid: 54167d390c723d0478471af816928994, type: 2}
   InputButtons:
   - Name: Spacebar
     PositiveKey: 32
     RequiredState: 1
     InputReference: {fileID: 11400000, guid: da46ac92ca7723b4daa5826e4dbaf4ac, type: 2}
+  - Name: Arrow up
+    PositiveKey: 273
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: f217f7d673b4dc74684d89ff18730d65, type: 2}
+  - Name: Arrow down
+    PositiveKey: 274
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
   EventButtons: []
   InputAxes:
   - Name: Mouse X
