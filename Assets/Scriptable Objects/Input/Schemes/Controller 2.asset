@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a0988ce5d8a3541bda1c1e501786b5, type: 3}
+  m_Name: Controller 2
+  m_EditorClassIdentifier: 
+  HorizontalInputVariable: {fileID: 11400000, guid: aabf48096cd7d7246927d753169314db,
+    type: 2}
+  JumpButtonVariable: {fileID: 11400000, guid: 26532d7b6bebf5b49a3da55f3e6f1a5f, type: 2}
+  Ability1ButtonVariable: {fileID: 11400000, guid: 4a77dc1efc21cb94e988392b170a8c57,
+    type: 2}
