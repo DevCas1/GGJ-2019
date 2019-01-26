@@ -2,27 +2,22 @@
 {
     using UnityEngine;
     using CodeArchitecture.Variables;
-
-    [CreateAssetMenu(fileName = "General_Character_Settings", menuName = "Character Settings/General Character Settings")]
-    public class CharacterSettings : ScriptableObject
+    
+    [RequireComponent(typeof(Rigidbody))]
+    public abstract class PlayerController : MonoBehaviour 
     {
-        [Header("General")]
+        [Header("Inputs (REQUIRED)")]
+        public InputVariable MovementInput;
+        public BoolVariable JumpButtonVariable;
+
+        [Space(10), Header("General")]
         public float MovementSpeed;
+
         [Space(10), Header("Jumping")]
         public float JumpForce;
-
         public float JumpFallSubstraction;
         public float JumpCheckDistance;
         public Vector3 JumpCheckOffset;
-    }
-
-    [RequireComponent(typeof(Rigidbody))]
-    public abstract class PlayerController : MonoBehaviour
-    {
-        [Header("Inputs (REQUIRED)")]
-        public CharacterSettings CharacterSettings;
-        public InputVariable MovementInput;
-        public BoolVariable JumpButtonVariable;
 
         protected Rigidbody _rb;
         protected Vector3 _currentVelocity;
@@ -52,12 +47,12 @@
         {
             _currentVelocity = Vector3.zero;
 
-            if (Physics.RaycastNonAlloc(transform.position + CharacterSettings.JumpCheckOffset, -transform.up, _raycastBuffer, CharacterSettings.JumpCheckDistance) > 0)
+            if (Physics.RaycastNonAlloc(transform.position + JumpCheckOffset, -transform.up, _raycastBuffer, JumpCheckDistance) > 0)
             {
                 if (JumpButtonVariable.Value)
                 {
                     _isJumping = true;
-                    _currentJumpVelocity = CharacterSettings.JumpForce;
+                    _currentJumpVelocity = JumpForce;
                 }
                 else
                 {
@@ -67,10 +62,10 @@
             }
 
             if (_isJumping)
-                _currentJumpVelocity -= CharacterSettings.JumpFallSubstraction;
+                _currentJumpVelocity -= JumpFallSubstraction;
 
             float forwardMotion = Mathf.Abs(MovementInput.Value.x) > 0.05 ? MovementInput.Value.x : 0;
-            _currentVelocity = new Vector3(forwardMotion * CharacterSettings.MovementSpeed, _currentJumpVelocity, 0);
+            _currentVelocity = new Vector3(forwardMotion * MovementSpeed, _currentJumpVelocity, 0);
 
             if (Mathf.Abs(MovementInput.Value.x) > 0.05)
             {

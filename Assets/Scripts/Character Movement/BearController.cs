@@ -4,23 +4,23 @@ namespace Sjouke.Controls
 {
     using Sjouke.CodeArchitecture.Variables;
 
-    [CreateAssetMenu(fileName = "Bear_Character_Settings", menuName = "Character Settings/Bear Settings")]
-    public class BearSettings : CharacterSettings
-    {
-        public float RollAbilitySpeed;
-        public float RollAbilityDistance;
-    }
-
     public sealed class BearController : PlayerController
     {
-        public BoolVariable RollAbilityButton;
-
         [Space(10), Header("Bear Visuals (REQUIRED)")]
         public GameObject BearVisualStandard;
         public GameObject BearVisualRolling;
 
+        [Space(10), Header("Roll Ability Settings")]
+        public BoolVariable RollAbilityButton;
+        public float RollAbilitySpeed;
+        public float RollAbilityDistance;
+        public float RollColCheckDistance;
+        public float RollAnimSpeed;
+
+
         private bool _isRolling = false;
-        private float _currentRollDistance;
+        private bool _isRollingRight;
+        private float _rollStartPos;
 
         protected override void Start()
         {
@@ -33,25 +33,61 @@ namespace Sjouke.Controls
 
         protected override void Update()
         {
-            base.Update();
-
-            if (RollAbilityButton.Value && Mathf.Abs(_currentVelocity.x) > 0.05f)
+            if (!_isRolling && RollAbilityButton.Value && Mathf.Abs(_currentVelocity.x) > 0.05f)
+            {
+                _isRollingRight = MovementInput.Value.x > 0;
                 InitiateRoll();
+                return;
+            }
 
             if (_isRolling)
+            {
                 PerformRoll();
+                return;
+            }
+
+            base.Update();
         }
 
         private void InitiateRoll()
         {
             _isRolling = true;
+            _rollStartPos = transform.position.x;
+
+            _rb.rotation = Quaternion.Euler(0, _isRollingRight ? 0 : 180, _rb.rotation.eulerAngles.z);
+
             BearVisualStandard.SetActive(!_isRolling);
             BearVisualRolling.SetActive(_isRolling);
+            PerformRoll();
         }
 
         private void PerformRoll()
         {
+            if ((Mathf.Abs(transform.position.x + _rollStartPos) >= RollAbilityDistance && _isRollingRight) ||
+                (Mathf.Abs(transform.position.x + _rollStartPos) <= RollAbilityDistance && !_isRollingRight))
+            {
+                FinishRoll();
+                return;
+            }
+            
+            Debug.DrawRay(transform.position + JumpCheckOffset, (_isRollingRight ? Vector3.right : -Vector3.right) * RollColCheckDistance);
+            if (Physics.RaycastNonAlloc(transform.position + JumpCheckOffset, (_isRollingRight ? Vector3.right : -Vector3.right), _raycastBuffer, RollColCheckDistance) > 0)
+            {
+                // Make ice explode
+                FinishRoll();
+                return;
+            }
 
+            _rb.MovePosition(_rb.position + new Vector3(_isRollingRight ? RollAbilitySpeed : -RollAbilitySpeed, 0, 0) * Time.deltaTime);
+            BearVisualRolling.transform.Rotate(new Vector3(0, 0, _isRollingRight ? -RollAnimSpeed : RollAnimSpeed), Space.World);
+        }
+
+        private void FinishRoll()
+        {
+            _isRolling = false;
+            BearVisualStandard.SetActive(!_isRolling);
+            BearVisualRolling.SetActive(_isRolling);
+            BearVisualRolling.transform.localRotation = BearVisualStandard.transform.localRotation;
         }
     }
 }
