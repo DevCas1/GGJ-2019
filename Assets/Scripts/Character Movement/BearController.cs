@@ -10,13 +10,11 @@ namespace Sjouke.Controls
         public GameObject BearVisualStandard;
         public GameObject BearVisualRolling;
 
-        [Space(10), Header("Roll Ability Settings")]
-        public BoolVariable RollAbilityButton;
+        [Header("Roll Ability Settings")]
         public float RollAbilitySpeed;
         public float RollAbilityDistance;
         public float RollColCheckDistance;
         public float RollAnimSpeed;
-
 
         private bool _isRolling = false;
         private bool _isRollingRight;
@@ -33,7 +31,7 @@ namespace Sjouke.Controls
 
         protected override void Update()
         {
-            if (!_isRolling && RollAbilityButton.Value && Mathf.Abs(_currentVelocity.x) > 0.05f)
+            if (!_isRolling && Ability1ButtonVariable.Value && Mathf.Abs(_currentVelocity.x) > 0.05f)
             {
                 _isRollingRight = MovementInput.Value.x > 0;
                 InitiateRoll();

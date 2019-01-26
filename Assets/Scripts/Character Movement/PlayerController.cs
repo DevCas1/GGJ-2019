@@ -10,14 +10,17 @@
         public InputVariable MovementInput;
         public BoolVariable JumpButtonVariable;
 
-        [Space(10), Header("General")]
+        [Header("General")]
         public float MovementSpeed;
 
-        [Space(10), Header("Jumping")]
+        [Header("Jumping")]
         public float JumpForce;
         public float JumpFallSubstraction;
         public float JumpCheckDistance;
         public Vector3 JumpCheckOffset;
+
+        [Header("Ability 1")] 
+        public BoolVariable Ability1ButtonVariable;
 
         protected Rigidbody _rb;
         protected Vector3 _currentVelocity;
