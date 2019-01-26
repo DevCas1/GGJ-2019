@@ -75,15 +75,43 @@ MonoBehaviour:
     PositiveKey: 274
     RequiredState: 1
     InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  - Name: Controller 1 A
+    PositiveKey: 274
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  - Name: Controller 1 B
+    PositiveKey: 274
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  - Name: Controller 2 A
+    PositiveKey: 274
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  - Name: Controller 2 B
+    PositiveKey: 274
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  - Name: WASD Down
+    PositiveKey: 115
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: fa711afe98c1fc74dad40832eed7ee97, type: 2}
   EventButtons: []
   InputAxes:
-  - Name: Mouse X
+  - Name: Horizontal 1
     InvertAxis: 0
     RawAxis: 0
-    InputReference: {fileID: 11400000, guid: 464676fc5407ae54e93c19d6cc56da4e, type: 2}
-  - Name: Mouse Y
+    InputReference: {fileID: 11400000, guid: 457d35b5d8f4b67429d13eb7d03f4d21, type: 2}
+  - Name: Vertical 1
     InvertAxis: 0
     RawAxis: 0
-    InputReference: {fileID: 11400000, guid: 72d0648707bd7b54f945e9ee19699a7d, type: 2}
+    InputReference: {fileID: 11400000, guid: c50f4be85d034b049af4af0343fd2e39, type: 2}
+  - Name: Horizontal 2
+    InvertAxis: 0
+    RawAxis: 0
+    InputReference: {fileID: 11400000, guid: 0361ae5d933095246886e8fb9868bd56, type: 2}
+  - Name: Vertical 2
+    InvertAxis: 0
+    RawAxis: 0
+    InputReference: {fileID: 11400000, guid: 40e5deb5e31c8934d92605d8f8ef448a, type: 2}
   Pointer:
     InputReference: {fileID: 0}

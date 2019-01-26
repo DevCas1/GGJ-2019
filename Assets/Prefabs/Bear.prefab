@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!136 &1145245074102961038
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3804428290429488537}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.8
+  m_Height: 2.53
+  m_Direction: 0
+  m_Center: {x: -0.06, y: 0, z: 0}
 --- !u!1 &5242188790168243491
 GameObject:
   m_ObjectHideFlags: 0
@@ -9,7 +23,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5242188790168243497}
-  - component: {fileID: 5242188790168243500}
   - component: {fileID: 5242188790168243501}
   - component: {fileID: 2158543358449981043}
   m_Layer: 0
@@ -35,20 +48,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &5242188790168243500
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5242188790168243491}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.8
-  m_Height: 2.53
-  m_Direction: 0
-  m_Center: {x: -0.06, y: 0, z: 0}
 --- !u!54 &5242188790168243501
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -77,12 +76,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9df7096de0c41ed4eb703f2dfc5d498a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CharacterSettings: {fileID: 11400000, guid: 654da4fbc7ef2b8449e3aff964d02375, type: 2}
   MovementInput: {fileID: 11400000, guid: bbe4496759c33e84c920d8ad6560a2b4, type: 2}
   JumpButtonVariable: {fileID: 11400000, guid: f217f7d673b4dc74684d89ff18730d65, type: 2}
-  RollAbilityButton: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  MovementSpeed: 8
+  JumpForce: 20
+  JumpFallSubstraction: 0.85
+  JumpCheckDistance: 1.1
+  JumpCheckOffset: {x: 0, y: 0, z: 0}
   BearVisualStandard: {fileID: 3804428290429488537}
   BearVisualRolling: {fileID: 6294597571565076813}
+  RollAbilityButton: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
+  RollAbilitySpeed: 20
+  RollAbilityDistance: 7.5
+  RollColCheckDistance: 1.5
+  RollAnimSpeed: 15
+--- !u!135 &3396227973406081269
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6294597571565076813}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.85
+  m_Center: {x: 0, y: 0.005202234, z: 0.002946914}
 --- !u!1001 &3804428290429455161
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -138,6 +158,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 3ab29a0edb5ced5419e79f77c939cc16, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c6953781ea90d934f92b1f20b82a00fa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3ab29a0edb5ced5419e79f77c939cc16, type: 3}
 --- !u!1 &3804428290429488537 stripped
@@ -211,6 +235,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 16b0e359fce999649a7d83ca7e553d9f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: c6953781ea90d934f92b1f20b82a00fa, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b0e359fce999649a7d83ca7e553d9f, type: 3}
 --- !u!1 &6294597571565076813 stripped

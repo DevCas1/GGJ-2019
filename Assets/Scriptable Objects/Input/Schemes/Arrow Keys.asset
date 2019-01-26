@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5a0988ce5d8a3541bda1c1e501786b5, type: 3}
+  m_Name: Arrow Keys
+  m_EditorClassIdentifier: 
+  HorizontalInputVariable: {fileID: 11400000, guid: bbe4496759c33e84c920d8ad6560a2b4,
+    type: 2}
+  JumpButtonVariable: {fileID: 11400000, guid: f217f7d673b4dc74684d89ff18730d65, type: 2}
+  Ability1ButtonVariable: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c,
+    type: 2}
