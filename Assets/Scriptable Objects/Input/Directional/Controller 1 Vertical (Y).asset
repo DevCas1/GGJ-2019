@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Controller 1 Vertical (Y)
   m_EditorClassIdentifier: 
   DeveloperDescription: 
-  ResetAtAwake: 0
+  ResetAtAwake: 1
   DefaultValue: 0
   Value: 0

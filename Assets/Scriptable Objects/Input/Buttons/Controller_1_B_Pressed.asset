@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b123d406d8aeb1d498ae6bb7366c0499, type: 3}
-  m_Name: Controller_1_A_Pressed 1
+  m_Name: Controller_1_B_Pressed
   m_EditorClassIdentifier: 
   DeveloperDescription: 
   Value: 0
-  ResetAtAwake: 0
+  ResetAtAwake: 1
   DefaultValue: 0

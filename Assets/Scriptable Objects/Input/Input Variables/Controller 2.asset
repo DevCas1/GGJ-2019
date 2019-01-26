@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63a599f1999f456418c6586b0dd88dfd, type: 3}
   m_Name: Controller 2
   m_EditorClassIdentifier: 
-  XAxis: {fileID: 0}
-  YAxis: {fileID: 0}
+  XAxis: {fileID: 11400000, guid: 0361ae5d933095246886e8fb9868bd56, type: 2}
+  YAxis: {fileID: 11400000, guid: 40e5deb5e31c8934d92605d8f8ef448a, type: 2}
