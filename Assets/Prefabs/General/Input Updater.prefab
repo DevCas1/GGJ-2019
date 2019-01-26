@@ -71,6 +71,10 @@ MonoBehaviour:
     PositiveKey: 273
     RequiredState: 1
     InputReference: {fileID: 11400000, guid: f217f7d673b4dc74684d89ff18730d65, type: 2}
+  - Name: Arrow down
+    PositiveKey: 274
+    RequiredState: 1
+    InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
   EventButtons: []
   InputAxes:
   - Name: Mouse X
