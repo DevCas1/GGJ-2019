@@ -1,1 +1,2 @@
-﻿public class BearBreakable : UnityEngine.MonoBehaviour{}
+﻿using UnityEngine;
+public class BearBreakable : MonoBehaviour {}

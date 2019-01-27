@@ -68,7 +68,8 @@ namespace Sjouke.Input
     {
         public Vector2 Position { get; internal set; }
         internal Vector2 PrevPos;
-        public Vector2Variable InputReference;
+        public Vector2Variable MousePosition;
+        public Vector2Variable MouseDelta;
     }
 
     [AddComponentMenu("Controls/Input Updater")]
@@ -92,14 +93,12 @@ namespace Sjouke.Input
         private void UpdateMouseValues()
         {
             Pointer.Position = UnityEngine.Input.mousePosition;
-            if (Pointer.InputReference != null) Pointer.InputReference.Value = Pointer.Position;
+            if (Pointer.MousePosition != null) Pointer.MousePosition.Value = Pointer.Position;
+            if (Pointer.MouseDelta != null) Pointer.MouseDelta.Value = Pointer.Position - Pointer.PrevPos;
         }
 
-        private void LateUpdate()
-        {
-            Pointer.PrevPos = Pointer.Position;
-        }
-
+        private void LateUpdate() => Pointer.PrevPos = Pointer.Position;
+        
         private void UpdateValueButtons()
         {
             foreach (var input in ValueButtons)
@@ -121,7 +120,7 @@ namespace Sjouke.Input
             {
                 try
                 {
-                    input.InputReference.Value = (CheckButton(input.PositiveKey, input.RequiredState));
+                    input.InputReference.Value = CheckButton(input.PositiveKey, input.RequiredState);
                 }
                 catch (Exception e)
                 {
@@ -154,7 +153,7 @@ namespace Sjouke.Input
                 case InputButtonState.Hold: return UnityEngine.Input.GetKey(inputKey);
                 case InputButtonState.Release: return UnityEngine.Input.GetKeyUp(inputKey);
                 default:
-                    Debug.LogError("Input Updater - CheckButton() - default state should never be reached!");
+                    Debug.LogError("Input Updater - CheckButton(): default state should never be reached!");
                     break;
             }
             return false;
