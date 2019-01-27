@@ -6,32 +6,28 @@
 
     public class InputSchemeAssigner : MonoBehaviour
     {
-        [Header("Input Scheme Player 1")]
+        [Header("Assignable Players (REQUIRED)")]
         public PlayerController Player1;
-        public InputScheme InputSchemePlayer1;
-        [Header("Input Scheme Player 2")]
         public PlayerController Player2;
-        public InputScheme InputSchemePlayer2;
+        [Header("Available input schemes")]
+        public InputScheme[] InputSchemes;
 
         void Start() => AssignSchemes();
 
         public void AssignSchemes()
         {
+            var connectedDevices = Input.GetJoystickNames();
+
             try
             {
-                if (Player1 != null && InputSchemePlayer1 != null)
-                {
-                    Player1.MovementInput = InputSchemePlayer1.HorizontalInputVariable;
-                    Player1.JumpButtonVariable = InputSchemePlayer1.JumpButtonVariable;
-                    Player1.Ability1ButtonVariable = InputSchemePlayer1.Ability1ButtonVariable;
-                }
+                Player1.MovementInput = InputSchemes[connectedDevices.Length > 0 ? 2 : 0].InputVariable;
+                Player1.JumpButtonVariable = InputSchemes[connectedDevices.Length > 0 ? 2 : 0].JumpButtonVariable;
+                Player1.Ability1ButtonVariable = InputSchemes[connectedDevices.Length > 0 ? 2 : 0].Ability1ButtonVariable;
 
-                if (Player2 != null && InputSchemePlayer2 != null)
-                {
-                    Player2.MovementInput = InputSchemePlayer2.HorizontalInputVariable;
-                    Player2.JumpButtonVariable = InputSchemePlayer2.JumpButtonVariable;
-                    Player2.Ability1ButtonVariable = InputSchemePlayer2.Ability1ButtonVariable;
-                }
+                Player2.MovementInput = InputSchemes[connectedDevices.Length > 1 ? 3 : 1].InputVariable;
+                Player2.JumpButtonVariable = InputSchemes[connectedDevices.Length > 1 ? 3 : 1].JumpButtonVariable;
+                Player2.Ability1ButtonVariable = InputSchemes[connectedDevices.Length > 1 ? 3 : 1].Ability1ButtonVariable;
+
             }
             catch (Exception e)
             {

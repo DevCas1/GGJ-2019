@@ -7,7 +7,7 @@
     [CreateAssetMenu]
     public class InputScheme : ScriptableObject
     {
-        public InputVariable HorizontalInputVariable;
+        public InputVariable InputVariable;
         public BoolVariable JumpButtonVariable;
         public BoolVariable Ability1ButtonVariable;
     }

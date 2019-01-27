@@ -58,6 +58,7 @@
             {
                 if (JumpButtonVariable.Value)
                 {
+                    Debug.Log("I SHOULD JUMP");
                     _isJumping = true;
                     _jumpCooldownTimer = JumpCooldown;
                     _currentJumpVelocity = JumpForce;
