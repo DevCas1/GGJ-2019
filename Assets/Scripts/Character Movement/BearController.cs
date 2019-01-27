@@ -70,10 +70,14 @@ namespace Sjouke.Controls
             if (Physics.Raycast(transform.position + JumpCheckOffset, _isRollingRight ? Vector3.right : -Vector3.right, out var hit, RollAbilityDistance))
             {
                 if (hit.transform.GetComponent<BearBreakable>())
+                {
                     hit.transform.gameObject.SetActive(false);
-                
-                FinishRoll();
-                return;
+                }
+                else
+                {
+                    FinishRoll();
+                    return;
+                }
             }
 
             _rb.MovePosition(_rb.position + new Vector3(_isRollingRight ? RollAbilitySpeed : -RollAbilitySpeed, 0, 0) * Time.deltaTime);

@@ -822,27 +822,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2158543358449981043, guid: fa4725fa549cc114591c720f84d70623,
-        type: 3}
-      propertyPath: Ability1ButtonVariable
-      value: 
-      objectReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c,
-        type: 2}
-    - target: {fileID: 2158543358449981043, guid: fa4725fa549cc114591c720f84d70623,
-        type: 3}
-      propertyPath: JumpCooldown
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158543358449981043, guid: fa4725fa549cc114591c720f84d70623,
-        type: 3}
-      propertyPath: JumpForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2158543358449981043, guid: fa4725fa549cc114591c720f84d70623,
-        type: 3}
-      propertyPath: JumpFallSubstraction
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa4725fa549cc114591c720f84d70623, type: 3}
 --- !u!1001 &8529140988581621131
