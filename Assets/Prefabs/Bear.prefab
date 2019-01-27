@@ -12,7 +12,7 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.8
   m_Height: 2.53
-  m_Direction: 0
+  m_Direction: 2
   m_Center: {x: -0.06, y: 0, z: 0}
 --- !u!1 &5242188790168243491
 GameObject:
@@ -83,9 +83,10 @@ MonoBehaviour:
   JumpFallSubstraction: 0.85
   JumpCheckDistance: 1.1
   JumpCheckOffset: {x: 0, y: 0, z: 0}
+  Ability1ButtonVariable: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c,
+    type: 2}
   BearVisualStandard: {fileID: 3804428290429488537}
   BearVisualRolling: {fileID: 6294597571565076813}
-  RollAbilityButton: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
   RollAbilitySpeed: 20
   RollAbilityDistance: 7.5
   RollColCheckDistance: 1.5
@@ -113,6 +114,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: 3ab29a0edb5ced5419e79f77c939cc16, type: 3}
       propertyPath: m_Name
       value: PolarBear
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 3ab29a0edb5ced5419e79f77c939cc16, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 3ab29a0edb5ced5419e79f77c939cc16, type: 3}
       propertyPath: m_LocalPosition.x

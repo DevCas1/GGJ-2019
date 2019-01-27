@@ -65,7 +65,7 @@
             }
 
             if (_isJumping)
-                _currentJumpVelocity -= JumpFallSubstraction;
+                _currentJumpVelocity -= (JumpFallSubstraction * Time.deltaTime);
 
             float forwardMotion = Mathf.Abs(MovementInput.Value.x) > 0.05 ? MovementInput.Value.x : 0;
             _currentVelocity = new Vector3(forwardMotion * MovementSpeed, _currentJumpVelocity, 0);
