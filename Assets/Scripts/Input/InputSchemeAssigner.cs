@@ -17,6 +17,12 @@
         public void AssignSchemes()
         {
             var connectedDevices = Input.GetJoystickNames();
+            Debug.Log($"Connected controllers: {connectedDevices.Length}");
+            if (connectedDevices.Length > 0)
+            {
+                for (int index = 0; index < connectedDevices.Length; index++)
+                    Debug.Log($"\tDevice {index}: {connectedDevices[index]}");
+            }
 
             try
             {

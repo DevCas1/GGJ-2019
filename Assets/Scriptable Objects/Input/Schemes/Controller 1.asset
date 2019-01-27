@@ -12,8 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a0988ce5d8a3541bda1c1e501786b5, type: 3}
   m_Name: Controller 1
   m_EditorClassIdentifier: 
-  HorizontalInputVariable: {fileID: 11400000, guid: f2bf109ab8f6ed34c910530d86245e26,
-    type: 2}
+  InputVariable: {fileID: 11400000, guid: f2bf109ab8f6ed34c910530d86245e26, type: 2}
   JumpButtonVariable: {fileID: 11400000, guid: 88f62d8c081212942bc1ccb4da1b9aed, type: 2}
   Ability1ButtonVariable: {fileID: 11400000, guid: bf513ee8c5eb9f7409fc15191a5df1e8,
     type: 2}

@@ -76,11 +76,11 @@ MonoBehaviour:
     RequiredState: 1
     InputReference: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c, type: 2}
   - Name: Controller 1 A
-    PositiveKey: 330
+    PositiveKey: 350
     RequiredState: 1
     InputReference: {fileID: 11400000, guid: 88f62d8c081212942bc1ccb4da1b9aed, type: 2}
   - Name: Controller 1 B
-    PositiveKey: 331
+    PositiveKey: 351
     RequiredState: 1
     InputReference: {fileID: 11400000, guid: bf513ee8c5eb9f7409fc15191a5df1e8, type: 2}
   - Name: Controller 2 A
