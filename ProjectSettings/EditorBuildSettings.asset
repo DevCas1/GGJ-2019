@@ -8,4 +8,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Casper.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Simeon/Scenes/Level1.unity
+    guid: 86c83ba50d393e842881e8f5cc134475
+  - enabled: 1
+    path: Assets/Simeon/Simeon (27-01-2019)/Scenes/StartupMenu.unity
+    guid: 55f9be9e344aa4f48b2b5ae696d06520
+  - enabled: 1
+    path: Assets/Simeon/Simeon (27-01-2019)/Scenes/WinGameScene.unity
+    guid: 633cfac1391f6ae418e41f1726c9b9bf
   m_configObjects: {}

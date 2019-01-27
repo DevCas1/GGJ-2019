@@ -1,19 +1,19 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public Canvas playCanvas;
     public Canvas pauseCanvas;
+    public Canvas youLoseCanvas;
+    public Canvas optionsCanvas;
+
+    void Start()
+    {
+        Time.timeScale = 1;
+    }
 
     void Update()
     {
-        if (playCanvas.gameObject.activeInHierarchy)
-        {
-            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow)) Play();
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape) && !pauseCanvas.gameObject.activeInHierarchy)
         {
             pauseCanvas.gameObject.SetActive(true);
@@ -24,22 +24,35 @@ public class MainMenu : MonoBehaviour
             pauseCanvas.gameObject.SetActive(false);
             Time.timeScale = 1;
         }
-
-        if (playCanvas.gameObject.activeInHierarchy && pauseCanvas.gameObject.activeInHierarchy) pauseCanvas.gameObject.SetActive(false);
     }
 
-    public void Play()
+    public void YouWin()
     {
-        Time.timeScale = 1;
-        playCanvas.gameObject.SetActive(false);
+        SceneManager.LoadScene("WinGameScene");
+    }
+    public void YouLose()
+    {
+        Time.timeScale = 0;
+        if (youLoseCanvas) youLoseCanvas.gameObject.SetActive(true);
+    }
+
+    public void Options()
+    {
+        pauseCanvas.gameObject.SetActive(false);
+        optionsCanvas.gameObject.SetActive(true);
+    }
+    public void Back()
+    {
+        optionsCanvas.gameObject.SetActive(false);
+        pauseCanvas.gameObject.SetActive(true);
     }
     public void Retry()
     {
         Time.timeScale = 1;
         SceneManager.LoadScene("Level1");
-    }   
+    }
     public void Exit()
     {
-        Application.Quit();
+        SceneManager.LoadScene("StartupMenu");
     }
 }
