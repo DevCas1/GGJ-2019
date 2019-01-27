@@ -3,8 +3,7 @@
 public class CameraMovement : MonoBehaviour
 {
     public float lerpSpeed = 4;
-    public float YDistance = 1.5f;
-    public float ZDistance = 10;
+    public float YDistance = 0.5f;
 
     public Transform target1;
     public Transform target2;
@@ -13,10 +12,14 @@ public class CameraMovement : MonoBehaviour
     {
         return target1.position.x - target2.position.x;
     }
+    float Y_TargetDistance()
+    {
+        return target1.position.y - target2.position.y;
+    }
 
     Vector3 TargetPos()
     {
-        return new Vector3(0, YDistance, Mathf.Clamp(-ZDistance - X_TargetDistance(), -15, -5));
+        return new Vector3(0, YDistance, Mathf.Clamp(-X_TargetDistance() / 2 + (Y_TargetDistance() / 2), -20, -3));
     }
 
     void Update()
