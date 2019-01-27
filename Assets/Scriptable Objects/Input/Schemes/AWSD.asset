@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5a0988ce5d8a3541bda1c1e501786b5, type: 3}
   m_Name: AWSD
   m_EditorClassIdentifier: 
-  HorizontalInputVariable: {fileID: 11400000, guid: 7d4f7f518308e094cab49acbf3fe0419,
-    type: 2}
+  InputVariable: {fileID: 11400000, guid: 7d4f7f518308e094cab49acbf3fe0419, type: 2}
   JumpButtonVariable: {fileID: 11400000, guid: da46ac92ca7723b4daa5826e4dbaf4ac, type: 2}
-  Ability1ButtonVariable: {fileID: 0}
+  Ability1ButtonVariable: {fileID: 11400000, guid: 0707e16f5a084cd429f4615430ee54e4,
+    type: 2}
