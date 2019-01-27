@@ -2,7 +2,7 @@
 
 public class Penguin_Movement : MonoBehaviour
 {
-    public Mesh standingMesh, glidingMesh;
+    public Mesh standingMesh, glidingMesh, swimmingMesh;
 
     public float jumpStrength = 200;
     public float bouyancyStrength = 1;
@@ -63,6 +63,12 @@ public class Penguin_Movement : MonoBehaviour
         boxCol.center = StandingBoxCol_Center();
         boxCol.size = StandingBoxCol_Size();
     }
+    void SetMeshToSwimming()
+    {
+        GetComponent<MeshFilter>().mesh = swimmingMesh;
+        boxCol.center = StandingBoxCol_Center();
+        boxCol.size = StandingBoxCol_Size();
+    }
     void SetMeshToGliding()
     {
         GetComponent<MeshFilter>().mesh = glidingMesh;
@@ -77,7 +83,7 @@ public class Penguin_Movement : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 rb.AddForceAtPosition(Vector3.up * jumpStrength, transform.position, ForceMode.Force);
-                timerForJump = 1.5f;
+                timerForJump = 0.75f;
             }         
         }else timerForJump -= Time.deltaTime;
         if (Input.GetKey(KeyCode.A) && Input.GetKey(KeyCode.D)) SetMeshToStanding();
@@ -101,8 +107,9 @@ public class Penguin_Movement : MonoBehaviour
 
     void MovementInSwimmingZone()
     {
-        if (Input.GetKey(KeyCode.W)) rb.AddForceAtPosition(transform.right * swimSpeed, transform.position, ForceMode.Force);
-        if (Input.GetKey(KeyCode.S)) rb.AddForceAtPosition(-(transform.right) * (swimSpeed / 3), transform.position, ForceMode.Force);
+        SetMeshToSwimming();
+        if (Input.GetKey(KeyCode.W)) rb.AddForceAtPosition(transform.up * swimSpeed, transform.position, ForceMode.Force);
+        if (Input.GetKey(KeyCode.S)) rb.AddForceAtPosition(-(transform.up) * (swimSpeed / 3), transform.position, ForceMode.Force);
         if (Input.GetKey(KeyCode.A)) transform.eulerAngles += (Vector3.forward * 180) * Time.deltaTime;
         if (Input.GetKey(KeyCode.D)) transform.eulerAngles += (-Vector3.forward * 180) * Time.deltaTime;
         rb.AddForceAtPosition(Vector3.up * bouyancyStrength, transform.position, ForceMode.Force);

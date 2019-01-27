@@ -1,21 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class CameraMovement : MonoBehaviour {
-
+public class CameraMovement : MonoBehaviour
+{
     public float lerpSpeed = 4;
     public float YDistance = 1.5f;
     public float ZDistance = 10;
 
-    public Transform target;
+    public Transform target1;
+    public Transform target2;
+
+    float X_TargetDistance()
+    {
+        return target1.position.x - target2.position.x;
+    }
 
     Vector3 TargetPos()
     {
-        return new Vector3(target.position.x, target.position.y + YDistance, target.position.z + - ZDistance);
+        return new Vector3(0, YDistance, Mathf.Clamp(-ZDistance - X_TargetDistance(), -15, -5));
     }
 
-	void Update () {
-        transform.position = Vector3.Lerp(transform.position, TargetPos(), lerpSpeed * Time.deltaTime);
-	}
+    void Update()
+    {
+        Vector3 middlePos = Vector3.Lerp(target1.position, target2.position, 0.5f);
+        transform.position = Vector3.Lerp(transform.position, middlePos + TargetPos(), lerpSpeed * Time.deltaTime);
+    }
 }
