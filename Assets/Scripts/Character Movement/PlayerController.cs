@@ -17,6 +17,7 @@
         public float JumpForce;
         public float JumpFallSubstraction;
         public float JumpCheckDistance;
+        public float JumpCooldown;
         public Vector3 JumpCheckOffset;
 
         [Header("Ability 1")] 
@@ -26,6 +27,7 @@
         protected Vector3 _currentVelocity;
         protected RaycastHit[] _raycastBuffer = new RaycastHit[5];
         private bool _isJumping = false;
+        private float _jumpCooldownTimer;
         private float _currentJumpVelocity;
 
 #if UNITY_EDITOR
@@ -44,28 +46,32 @@
         protected virtual void Update()
         {
             PerformMovement();
+            if (_jumpCooldownTimer > 0)
+                _jumpCooldownTimer -= Time.deltaTime;
         }
 
         protected virtual void PerformMovement()
         {
             _currentVelocity = Vector3.zero;
 
-            if (Physics.RaycastNonAlloc(transform.position + JumpCheckOffset, -transform.up, _raycastBuffer, JumpCheckDistance) > 0)
+            if (_jumpCooldownTimer <= 0 && Physics.RaycastNonAlloc(transform.position + JumpCheckOffset, -transform.up, _raycastBuffer, JumpCheckDistance) > 0)
             {
                 if (JumpButtonVariable.Value)
                 {
                     _isJumping = true;
+                    _jumpCooldownTimer = JumpCooldown;
                     _currentJumpVelocity = JumpForce;
                 }
                 else
                 {
                     _isJumping = false;
+                    _jumpCooldownTimer = 0;
                     _currentJumpVelocity = 0;
                 }
             }
 
             if (_isJumping)
-                _currentJumpVelocity -= (JumpFallSubstraction * Time.deltaTime);
+                _currentJumpVelocity -= JumpFallSubstraction * Time.deltaTime;
 
             float forwardMotion = Mathf.Abs(MovementInput.Value.x) > 0.05 ? MovementInput.Value.x : 0;
             _currentVelocity = new Vector3(forwardMotion * MovementSpeed, _currentJumpVelocity, 0);
