@@ -12,7 +12,7 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.8
   m_Height: 2.53
-  m_Direction: 0
+  m_Direction: 2
   m_Center: {x: -0.06, y: 0, z: 0}
 --- !u!1 &5242188790168243491
 GameObject:
@@ -41,7 +41,7 @@ Transform:
   m_GameObject: {fileID: 5242188790168243491}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 3804428290429063609}
   - {fileID: 6294597571565051245}
@@ -78,20 +78,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MovementInput: {fileID: 11400000, guid: bbe4496759c33e84c920d8ad6560a2b4, type: 2}
   JumpButtonVariable: {fileID: 11400000, guid: f217f7d673b4dc74684d89ff18730d65, type: 2}
-  MovementSpeed: 8
-  JumpForce: 13
-  JumpFallSubstraction: 25
-  JumpCheckDistance: 1.1
+  MovementSpeed: 4
+  JumpForce: 10
+  JumpFallSubstraction: 15
+  JumpCheckDistance: 0.66
   JumpCooldown: 0.5
   JumpCheckOffset: {x: 0, y: 0, z: 0}
   Ability1ButtonVariable: {fileID: 11400000, guid: ac79f9b5ea880cb4ba4230871f50a97c,
     type: 2}
   BearVisualStandard: {fileID: 3804428290429488537}
   BearVisualRolling: {fileID: 6294597571565076813}
-  RollAbilitySpeed: 20
-  RollAbilityDistance: 7.5
-  RollColCheckDistance: 1.5
-  RollAnimSpeed: 15
+  RollAbilitySpeed: 10
+  RollAbilityDistance: 3.75
+  RollColCheckDistance: 0.75
+  RollAnimSpeed: 10
 --- !u!135 &3396227973406081269
 SphereCollider:
   m_ObjectHideFlags: 0
