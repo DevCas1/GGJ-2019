@@ -18,7 +18,7 @@ namespace Sjouke.Controls
 
         private bool _isRolling = false;
         private bool _isRollingRight;
-        private float _rollStartPos;
+        private Vector3 _rollStartPos;
 
         protected override void Start()
         {
@@ -50,7 +50,7 @@ namespace Sjouke.Controls
         private void InitiateRoll()
         {
             _isRolling = true;
-            _rollStartPos = transform.position.x;
+            _rollStartPos = transform.position;
 
             _rb.rotation = Quaternion.Euler(0, _isRollingRight ? 0 : 180, _rb.rotation.eulerAngles.z);
 
@@ -61,17 +61,17 @@ namespace Sjouke.Controls
 
         private void PerformRoll()
         {
-            if ((Mathf.Abs(transform.position.x + _rollStartPos) >= RollAbilityDistance && _isRollingRight) ||
-                (Mathf.Abs(transform.position.x + _rollStartPos) <= RollAbilityDistance && !_isRollingRight))
+            if (Vector3.Distance(transform.position, _rollStartPos) >= RollAbilityDistance)
             {
                 FinishRoll();
                 return;
             }
-            
-            Debug.DrawRay(transform.position + JumpCheckOffset, (_isRollingRight ? Vector3.right : -Vector3.right) * RollColCheckDistance);
-            if (Physics.RaycastNonAlloc(transform.position + JumpCheckOffset, (_isRollingRight ? Vector3.right : -Vector3.right), _raycastBuffer, RollColCheckDistance) > 0)
+
+            if (Physics.Raycast(transform.position + JumpCheckOffset, _isRollingRight ? Vector3.right : -Vector3.right, out var hit, RollAbilityDistance))
             {
-                // Make ice explode
+                if (hit.transform.GetComponent<BearBreakable>())
+                    hit.transform.gameObject.SetActive(false);
+                
                 FinishRoll();
                 return;
             }
